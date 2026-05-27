@@ -1,0 +1,20 @@
+travel_date,route,distance,unit
+2024-01-08,London to New York,5570.00,km
+2024-01-15,London to Paris,340.00,km
+2024-01-22,New York to San Francisco,4130.00,km
+2024-02-05,London to Dubai,5500.00,km
+2024-02-12,Dubai to Singapore,5840.00,km
+2024-02-19,London to Frankfurt,650.00,km
+2024-03-04,London to New York,5570.00,km
+2024-03-11,London to Tokyo,9560.00,km
+2024-03-18,London to Paris,,km
+2024-03-25,New York to Chicago,-200.00,km
+2024-04-02,London to Dubai,5500.00,km
+2024-04-09,London to Sydney,17000.00,km
+2024-04-16,London to New York,5570.00,
+2024-05-07,London to Paris,340.00,km
+2024-05-14,New York to Los Angeles,4490.00,km
+2024-05-21,London to Frankfurt,650.00,km
+2024-06-03,London to New York,5570.00,km
+2024-06-10,London to Singapore,10840.00,km
+2024-06-17,Dubai to London,5500.00,km

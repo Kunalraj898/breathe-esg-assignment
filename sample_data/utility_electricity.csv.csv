@@ -1,0 +1,21 @@
+billing_date,site,consumption,unit
+2024-01-31,Head Office - Floor 1,12500.00,kWh
+2024-01-31,Head Office - Floor 2,9800.00,kWh
+2024-01-31,Warehouse A,34000.00,kWh
+2024-01-31,Data Centre,88000.00,kWh
+2024-02-29,Head Office - Floor 1,11800.00,kWh
+2024-02-29,Head Office - Floor 2,9200.00,kWh
+2024-02-29,Warehouse A,31500.00,kWh
+2024-02-29,Data Centre,87500.00,kWh
+2024-03-31,Head Office - Floor 1,10900.00,kWh
+2024-03-31,Head Office - Floor 2,,kWh
+2024-03-31,Warehouse A,32800.00,kWh
+2024-03-31,Data Centre,-500.00,kWh
+2024-04-30,Head Office - Floor 1,9800.00,kWh
+2024-04-30,Head Office - Floor 2,8700.00,kWh
+2024-04-30,Warehouse A,29000.00,kWh
+2024-04-30,Data Centre,85000.00,
+2024-05-31,Head Office - Floor 1,9500.00,kWh
+2024-05-31,Head Office - Floor 2,8400.00,kWh
+2024-05-31,Warehouse A,28000.00,kWh
+2024-05-31,Data Centre,84000.00,kWh
