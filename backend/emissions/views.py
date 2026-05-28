@@ -26,8 +26,11 @@ class DataSourceViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         qs = super().get_queryset()
         company_id = self.request.query_params.get("company")
-        if company_id:
-            qs = qs.filter(company_id=company_id)
+        if company_id and company_id not in ("undefined", "null", ""):
+            try:
+                qs = qs.filter(company_id=int(company_id))
+            except ValueError:
+                qs = qs.none()
         return qs
 
 
@@ -39,8 +42,11 @@ class RawUploadViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         qs = super().get_queryset()
         company_id = self.request.query_params.get("company")
-        if company_id:
-            qs = qs.filter(company_id=company_id)
+        if company_id and company_id not in ("undefined", "null", ""):
+            try:
+                qs = qs.filter(company_id=int(company_id))
+            except ValueError:
+                qs = qs.none()
         return qs
 
     def create(self, request, *args, **kwargs):
@@ -84,7 +90,11 @@ class NormalizedEmissionRecordViewSet(viewsets.ModelViewSet):
         params = self.request.query_params
 
         if company_id := params.get("company"):
-            qs = qs.filter(company_id=company_id)
+            if company_id not in ("undefined", "null", ""):
+                try:
+                    qs = qs.filter(company_id=int(company_id))
+                except ValueError:
+                    qs = qs.none()
         if status_filter := params.get("status"):
             qs = qs.filter(status=status_filter)
         if scope := params.get("scope"):
@@ -172,7 +182,15 @@ class AuditLogViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         qs = super().get_queryset()
         if company_id := self.request.query_params.get("company"):
-            qs = qs.filter(company_id=company_id)
+            if company_id not in ("undefined", "null", ""):
+                try:
+                    qs = qs.filter(company_id=int(company_id))
+                except ValueError:
+                    qs = qs.none()
         if record_id := self.request.query_params.get("record"):
-            qs = qs.filter(record_id=record_id)
+            if record_id not in ("undefined", "null", ""):
+                try:
+                    qs = qs.filter(record_id=int(record_id))
+                except ValueError:
+                    qs = qs.none()
         return qs
