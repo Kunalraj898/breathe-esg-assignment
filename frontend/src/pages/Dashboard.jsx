@@ -6,11 +6,11 @@ export default function Dashboard() {
   const [stats, setStats] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    api.getDashboard()
-      .then((res) => setStats(res.data))
-      .catch(() => setError("Failed to load dashboard data."));
-  }, []);
+ useEffect(() => {
+  api.getDashboard(1)
+    .then((res) => setStats(res.data))
+    .catch(() => setError("Failed to load dashboard data."));
+}, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-8">
