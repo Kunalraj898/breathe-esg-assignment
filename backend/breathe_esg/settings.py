@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import dj_database_url
 from decouple import config, Csv
@@ -7,6 +8,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY", default="django-insecure-dev-only-change-in-prod")
 DEBUG = config("DEBUG", default=True, cast=bool)
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost,127.0.0.1", cast=Csv())
+
+# Automatically trust Render hostname if running on Render
+if "RENDER" in os.environ:
+    render_external_hostname = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+    if render_external_hostname:
+        ALLOWED_HOSTS.append(render_external_hostname)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -91,8 +98,9 @@ CORS_ALLOWED_ORIGINS = config(
     default="http://localhost:5173,http://localhost:3000",
     cast=Csv(),
 )
-# In DEBUG mode allow all origins so local dev works without configuration friction
-CORS_ALLOW_ALL_ORIGINS = DEBUG
+# In DEBUG mode allow all origins so local dev works without configuration friction.
+# Can also be explicitly enabled via environment variables in production.
+CORS_ALLOW_ALL_ORIGINS = config("CORS_ALLOW_ALL_ORIGINS", default=DEBUG, cast=bool)
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
