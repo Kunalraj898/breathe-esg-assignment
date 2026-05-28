@@ -7,7 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config("SECRET_KEY", default="django-insecure-dev-only-change-in-prod")
 DEBUG = config("DEBUG", default=True, cast=bool)
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost,127.0.0.1", cast=Csv())
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS",
+    default="localhost,127.0.0.1,breathe-esg-backend-4id3.onrender.com",
+    cast=Csv()
+)
 
 # Automatically trust Render hostname if running on Render
 if "RENDER" in os.environ:
@@ -95,7 +99,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # CORS: allow React dev server (port 5173) and the deployed Vercel URL
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
-    default="http://localhost:5173,http://localhost:3000",
+    default="http://localhost:5173,http://localhost:3000,https://breathe-esg-assignment-drab.vercel.app",
     cast=Csv(),
 )
 # In DEBUG mode allow all origins so local dev works without configuration friction.
